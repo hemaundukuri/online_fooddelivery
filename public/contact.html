@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Michi Ramen</title>
+  <style>
+    body {
+      background: url('conimage.webp') no-repeat center center/cover;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      padding: 2rem;
+    }
+    form {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ff9900;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .admin-contact {
+      max-width: 400px;
+      margin: 2rem auto 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .admin-contact h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contact Us</h1>
+  <p>If you have any complaints about your order, please fill out the form below:</p>
+
+  <form action="submit_complaint.php" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Your Complaint:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="admin-contact">
+    <h2>Admin Contact Details</h2>
+    <p><strong>Name:</strong> Mr. Hiro Tanaka</p>
+    <p><strong>Email:</strong> admin@michiramen.com</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Address:</strong> Michi Ramen HQ, Vizianagaram, Andhra pradesh, India</p>
+  </div>
+
+</body>
+</html>

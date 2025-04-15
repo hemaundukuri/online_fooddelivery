@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+    @media (max-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .item {
+      width: 100%;
+      max-width: 250px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background-color: #fff;
+    }
+    .item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .price {
+      font-weight: bold;
+      color: #e91e63;
+      margin: 10px 0;
+    }
+    .add-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .add-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>Our Delicious Menu</h1>
+  <div class="menu-grid" id="menuContainer"></div>
+
+  <script>
+    const menuItems = [
+      { name: "Veg Biryani", price: 120, image: "veg biryani.jpg" },
+      { name: "Fried Biryani", price: 160, image: "fried biryani.webp" },
+      { name: "Chicken Biryani", price: 180, image: "dum biryani.jpg" },
+      { name: "Prawns biryani", price: 150, image: "Prawn-Biryani-Recipe.jpg" },
+      { name: "Noodles", price: 100, image: "noodles.jpg" },
+      { name: "Manchurian", price: 140, image: "Manchurian.jpg" },
+      { name: "Paneer Butter Masala", price: 180, image: "bunner.jpg" },
+      { name: "Idly with Sambar & Chutney", price: 80, image: "idly.jpg" },
+      { name: "Palak Paneer", price: 160, image: "palak-paneer.jpg" },
+      { name: "Puri with Aloo Sabzi", price: 100, image: "Puri.jpg" },
+      { name: "Chapati Rolls", price: 90, image: "chapati-rolls.jpg" },
+      { name: "Fish Curry", price: 220, image: "fish curry.jpg" },
+      { name: "Dosa with Chutney & Sambar", price: 90, image: "dosa.avif" },
+    ];
+
+    const container = document.getElementById('menuContainer');
+    menuItems.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'item';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <p>${item.name}</p>
+        <p class="price">₹${item.price}</p>
+        <button class="add-btn" onclick="addToCart(${index})">Add to Cart</button>
+      `;
+      container.appendChild(card);
+    });
+
+    function addToCart(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(menuItems[index]);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.href = "online.html";
+    }
+  </script>
+</body>
+</html>

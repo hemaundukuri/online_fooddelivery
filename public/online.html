@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Summary</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      background: white;
+      padding: 10px 15px;
+      margin: 10px auto;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .cart-item p {
+      margin: 5px 0;
+    }
+    .remove-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .summary {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+    .btn-home {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .btn-home:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Cart</h1>
+  <div id="cartItems"></div>
+  <div class="summary" id="summary"></div>
+  <div style="text-align:center;">
+    <a class="btn-home" href="menu.html">Back to Menu</a>
+  </div>
+
+  <script>
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartContainer = document.getElementById('cartItems');
+      const summary = document.getElementById('summary');
+      cartContainer.innerHTML = '';
+      summary.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        summary.innerHTML = "<p>Your cart is empty.</p>";
+      } else {
+        cart.forEach((item, index) => {
+          total += item.price;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <p><strong>${item.name}</strong></p>
+            <p>₹${item.price}</p>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+          `;
+          cartContainer.appendChild(div);
+        });
+        summary.innerHTML = `
+          <p>Total Items: ${cart.length}</p>
+          <p>Total Amount: ₹${total}</p>
+        `;
+      }
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    // Initial render
+    renderCart();
+  </script>
+</body>
+</html>

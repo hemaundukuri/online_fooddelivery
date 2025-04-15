@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enter Delivery Location</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('deli.avif') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Enter Delivery Location</h2>
+    <form action="order-confirmation.html" method="POST">
+      <label for="customer-name">Full Name</label>
+      <input type="text" id="customer-name" name="customer-name" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="number" id="phone" name="phone" required />
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" name="address" rows="4" required></textarea>
+
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required />
+
+      <label for="pincode">Pincode</label>
+      <input type="number" id="pincode" name="pincode" required />
+
+      <button type="submit">Proceed to Order</button>
+    </form>
+  </div>
+
+</body>
+</html>
